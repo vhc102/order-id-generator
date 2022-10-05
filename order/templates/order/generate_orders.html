@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center">Generate Multiple Orders</h1>
+    {% if msg %}
+        <p style="color:red;">{{ msg }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.total.label_tag }}
+            <input type="text" name="{{ form.total.name }}" class="form-control" placeholder="Enter number of order you want to create..."
+                   maxlength="{{ form.fields.total.max_length }}" required id="{{ form.total.auto_id }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
